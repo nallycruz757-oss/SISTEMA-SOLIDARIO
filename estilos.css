@@ -1,0 +1,990 @@
+/* ========================================================
+   SISTEMA WEB DE INTERCAMBIO SOLIDARIO
+   U.E. "ENRIQUE SÁNCHEZ DE LOZADA" - PORCO (AGUA DE CASTILLA)
+   Bachillerato Técnico Humanístico (BTH) - Gestión 2026
+   Desarrolladoras: Daniela Apaza, Leydi Coca, Haneth Tarqui
+   Tema: Femenino, Solidario, Moderno e Institucional
+   ======================================================== */
+
+:root {
+  /* Paleta Femenina & Escolar Armoniosa */
+  --verde-colegio: #1a7a4c;
+  --verde-menta: #2ec4b6;
+  --rosa-principal: #d81b60;
+  --rosa-hover: #ad1457;
+  --rosa-suave: #fce4ec;
+  --purpura-elegante: #7b1fa2;
+  --lila-pastel: #f3e5f5;
+  --turquesa-boton: #00897b;
+  --coral-boton: #ff6f61;
+  --dorado-boton: #f59e0b;
+  --azul-cielo: #0288d1;
+  
+  --blanco: #ffffff;
+  --gris-fondo: #fff5f8;
+  --gris-suave: #fdf2f4;
+  --gris-borde: #f8bbd0;
+  --texto-principal: #2d3748;
+  --texto-suave: #64748b;
+  
+  --sombra-suave: 0 4px 15px rgba(216, 27, 96, 0.08);
+  --sombra-hover: 0 8px 25px rgba(216, 27, 96, 0.16);
+  --radio: 14px;
+  --transicion: all 0.3s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--gris-fondo);
+  color: var(--texto-principal);
+  line-height: 1.6;
+}
+
+.contenedor {
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ================= ENCABEZADO ================= */
+.header-principal {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32 45%, #ad1457 100%);
+  color: var(--blanco);
+  padding: 1.2rem 0;
+  border-bottom: 4px solid #ff80ab;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.header-contenido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.logos-institucion {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.logo-colegio {
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 5px;
+  border: 3px solid #ff80ab;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease;
+}
+
+.logo-colegio:hover {
+  transform: scale(1.05) rotate(4deg);
+}
+
+.logos-institucion h1 {
+  font-size: 1.35rem;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.subtitulo-header {
+  font-size: 0.85rem;
+  opacity: 0.95;
+}
+
+.badge-lema {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-top: 0.35rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* ================= NAVEGACIÓN ================= */
+.barra-navegacion {
+  background-color: #ffffff;
+  box-shadow: 0 2px 12px rgba(216, 27, 96, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid #f8bbd0;
+}
+
+.menu-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.enlaces-nav {
+  display: flex;
+  list-style: none;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+}
+
+.enlaces-nav a {
+  text-decoration: none;
+  color: var(--texto-principal);
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  transition: var(--transicion);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.enlaces-nav a:hover, .enlaces-nav a.activo {
+  background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+  color: var(--rosa-principal);
+  box-shadow: 0 2px 8px rgba(216, 27, 96, 0.15);
+}
+
+.lema-nav {
+  font-size: 0.85rem;
+  color: #c2185b;
+  font-weight: 600;
+}
+
+/* ================= BOTONES MULTICOLOR LLAMATIVOS ================= */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 25px;
+  cursor: pointer;
+  border: none;
+  transition: var(--transicion);
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.18);
+}
+
+/* Botón 1: Rosa Fucsia Femenino (Donar) */
+.btn-primario {
+  background: linear-gradient(135deg, #e91e63, #c2185b);
+  color: #ffffff;
+}
+.btn-primario:hover {
+  background: linear-gradient(135deg, #d81b60, #880e4f);
+}
+
+/* Botón 2: Turquesa Menta Brillante (Ver catálogo) */
+.btn-secundario {
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  color: #ffffff;
+}
+.btn-secundario:hover {
+  background: linear-gradient(135deg, #0096c7, #03045e);
+}
+
+/* Botón 3: Dorado Solar Cálido (Acceso Psicopedagoga) */
+.btn-admin {
+  background: linear-gradient(135deg, #ffb703, #fb8500);
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+.btn-admin:hover {
+  background: linear-gradient(135deg, #fb8500, #d97706);
+}
+
+/* Botón 4: Púrpura Violeta Solidario (Solicitar Ayuda) */
+.btn-exito {
+  background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+  color: #ffffff;
+}
+.btn-exito:hover {
+  background: linear-gradient(135deg, #8e24aa, #4a148c);
+}
+
+/* Botón 5: Coral Cálido (Petición de Catálogo) */
+.btn-coral {
+  background: linear-gradient(135deg, #ff70a6, #ff9770);
+  color: #ffffff;
+}
+.btn-coral:hover {
+  background: linear-gradient(135deg, #ff5964, #f07167);
+}
+
+.btn-block {
+  width: 100%;
+  display: block;
+  margin-top: 1rem;
+}
+
+.btn-sm {
+  padding: 0.45rem 0.95rem;
+  font-size: 0.82rem;
+}
+
+.btn-claro {
+  background: #ffffff;
+  color: #ad1457;
+  font-weight: 600;
+}
+
+/* ================= BANNER HERO PRINCIPAL ================= */
+.hero-banner {
+  background: linear-gradient(135deg, #ffffff 0%, #fff0f5 50%, #f3e5f5 100%);
+  padding: 3.5rem 0;
+  border-bottom: 2px solid #f8bbd0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.hero-texto h2 {
+  font-size: 2.3rem;
+  color: #880e4f;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+.hero-texto p {
+  color: #475569;
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+}
+
+.hero-botones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.8rem;
+  flex-wrap: wrap;
+}
+
+.hero-imagen-box {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: var(--radio);
+  box-shadow: 0 10px 25px rgba(216, 27, 96, 0.15);
+  border: 3px solid #f8bbd0;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.hero-imagen-box:hover {
+  transform: translateY(-5px);
+}
+
+.foto-estudiantes {
+  width: 100%;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.pie-foto {
+  font-size: 0.85rem;
+  color: #ad1457;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* ================= TARJETAS DE CATEGORÍAS ================= */
+.seccion-categorias {
+  padding: 3rem 0 1.5rem 0;
+}
+
+.titulo-seccion {
+  font-size: 1.7rem;
+  color: #880e4f;
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.grid-categorias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.tarjeta-categoria {
+  background: #ffffff;
+  border-radius: var(--radio);
+  padding: 1.6rem;
+  text-align: center;
+  box-shadow: var(--sombra-suave);
+  cursor: pointer;
+  transition: var(--transicion);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.tarjeta-categoria::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #ec4899, #8b5cf6);
+}
+
+.tarjeta-categoria:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sombra-hover);
+  border-color: #f472b6;
+}
+
+.icono-cat {
+  font-size: 2.6rem;
+  background: linear-gradient(135deg, #ec4899, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 0.8rem;
+}
+
+.tarjeta-categoria h4 {
+  margin-bottom: 0.4rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.tarjeta-categoria p {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+/* ================= CATÁLOGO SOLIDARIO ================= */
+.seccion-catalogo {
+  padding: 2.5rem 0;
+}
+
+.cabecera-catalogo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.filtros-box {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.filtros-box input, .filtros-box select {
+  padding: 0.7rem 1.1rem;
+  border: 2px solid #f8bbd0;
+  border-radius: 25px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  background: #ffffff;
+  color: var(--texto-principal);
+  transition: var(--transicion);
+}
+
+.filtros-box input:focus, .filtros-box select:focus {
+  border-color: #d81b60;
+  box-shadow: 0 0 0 3px rgba(216, 27, 96, 0.15);
+}
+
+.grid-articulos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.8rem;
+}
+
+.tarjeta-articulo {
+  background: #ffffff;
+  border-radius: var(--radio);
+  padding: 1.6rem;
+  box-shadow: var(--sombra-suave);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #fce4ec;
+  border-left: 6px solid #e91e63;
+  transition: var(--transicion);
+  position: relative;
+}
+
+.tarjeta-articulo:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--sombra-hover);
+  border-color: #f8bbd0;
+}
+
+.badge-tipo {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+
+.badge-donacion { background: #fce4ec; color: #c2185b; border: 1px solid #f8bbd0; }
+.badge-intercambio { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+.badge-prestamo { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
+
+.titulo-art {
+  font-size: 1.2rem;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.detalles-art {
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+  margin-bottom: 1.2rem;
+}
+
+.info-pie-art {
+  border-top: 1px dashed #f8bbd0;
+  padding-top: 0.8rem;
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+}
+
+/* ================= FORMULARIOS ================= */
+.seccion-formulario {
+  padding: 3.5rem 0;
+}
+
+.fondo-claro {
+  background: linear-gradient(135deg, #fff0f5, #f3e5f5);
+}
+
+.form-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(216, 27, 96, 0.1);
+  border: 2px solid #f8bbd0;
+}
+
+.border-solidario {
+  border-top: 6px solid #9c27b0;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.icono-form {
+  font-size: 2.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.fila-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+.campo {
+  margin-bottom: 1.3rem;
+}
+
+.campo label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+  font-size: 0.92rem;
+  color: #334155;
+}
+
+.campo input, .campo select, .campo textarea {
+  width: 100%;
+  padding: 0.8rem 1.1rem;
+  border: 2px solid #f8bbd0;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  background: #fffdfd;
+  transition: var(--transicion);
+}
+
+.campo input:focus, .campo select:focus, .campo textarea:focus {
+  border-color: #d81b60;
+  box-shadow: 0 0 0 4px rgba(216, 27, 96, 0.12);
+}
+
+.campo-check {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 1.2rem 0;
+  background: #fdf2f8;
+  padding: 0.9rem;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  border: 1px dashed #f472b6;
+}
+
+/* ================= INFO PROYECTO ================= */
+.seccion-proyecto {
+  padding: 3.5rem 0;
+  background: #ffffff;
+  border-top: 2px solid #f8bbd0;
+}
+
+.card-info-proyecto {
+  background: linear-gradient(135deg, #ffffff, #fff5f8);
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 2px solid #f8bbd0;
+  box-shadow: var(--sombra-suave);
+}
+
+.grid-proyecto {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.lista-integrantes {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.lista-integrantes li {
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.badge-psico {
+  background: linear-gradient(135deg, #fce4ec, #f3e5f5);
+  border: 2px dashed #d81b60;
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(216, 27, 96, 0.08);
+}
+
+.badge-psico i {
+  color: #ad1457;
+  margin-bottom: 0.8rem;
+}
+
+.psico-desc {
+  font-size: 0.86rem;
+  color: #475569;
+  margin-top: 0.5rem;
+}
+
+/* ================= FOOTER ================= */
+.footer-colegio {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #e2e8f0;
+  padding: 2.2rem 0;
+  font-size: 0.9rem;
+  border-top: 4px solid #ff80ab;
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ================= PANEL PSICOPEDAGOGA ================= */
+.body-admin {
+  background-color: #fdf2f4;
+}
+
+.header-admin {
+  background: linear-gradient(135deg, #4a148c, #1e1b4b);
+  color: #fff;
+  padding: 1.2rem 0;
+  border-bottom: 4px solid #ff80ab;
+}
+
+.header-admin-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-titular {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.mini-escudo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  background: white;
+  border-radius: 50%;
+  padding: 3px;
+  border: 2px solid #ff80ab;
+}
+
+.admin-perfil {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.usuario-tag {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.88rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.layout-admin {
+  padding: 2.5rem 0;
+}
+
+.grid-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.card-metrica {
+  background: white;
+  border-radius: 16px;
+  padding: 1.6rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  box-shadow: 0 4px 15px rgba(216, 27, 96, 0.08);
+  border: 2px solid #fce4ec;
+  transition: transform 0.3s ease;
+}
+
+.card-metrica:hover {
+  transform: translateY(-4px);
+}
+
+.icono-metrica {
+  font-size: 2.6rem;
+}
+
+.card-metrica.verde i { color: #10b981; }
+.card-metrica.naranja i { color: #f59e0b; }
+.card-metrica.azul i { color: #0288d1; }
+.card-metrica.violeta i { color: #d81b60; }
+
+.card-metrica h3 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #1e293b;
+}
+
+.card-metrica p {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+}
+
+.tabs-admin {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: #ffffff;
+  border: 2px solid #f8bbd0;
+  padding: 0.85rem 1.6rem;
+  border-radius: 12px 12px 0 0;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transicion);
+  color: #64748b;
+}
+
+.tab-btn.activo {
+  background: linear-gradient(135deg, #d81b60, #ad1457);
+  color: white;
+  border-color: #ad1457;
+  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.2);
+}
+
+.seccion-tab {
+  display: none;
+}
+
+.seccion-tab.activa {
+  display: block;
+}
+
+.card-blanca {
+  background: white;
+  border-radius: 0 16px 16px 16px;
+  padding: 2.2rem;
+  box-shadow: var(--sombra-suave);
+  border: 2px solid #fce4ec;
+}
+
+.card-blanca-header {
+  margin-bottom: 1.5rem;
+}
+
+.card-blanca-header h3 {
+  color: #880e4f;
+  font-size: 1.35rem;
+}
+
+.card-blanca-header p {
+  color: var(--texto-suave);
+  font-size: 0.9rem;
+}
+
+.tabla-responsive {
+  overflow-x: auto;
+}
+
+.tabla-admin {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.92rem;
+}
+
+.tabla-admin th {
+  background: #fdf2f8;
+  color: #880e4f;
+  font-weight: 600;
+  padding: 1rem;
+  border-bottom: 2px solid #f8bbd0;
+}
+
+.tabla-admin td {
+  padding: 1rem;
+  border-bottom: 1px solid #fce4ec;
+}
+
+.tabla-admin tr:hover {
+  background-color: #fff9fb;
+}
+
+.acciones-flex {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Modales */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 200;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-contenido {
+  background: white;
+  padding: 2.2rem;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(216, 27, 96, 0.2);
+  border: 3px solid #f8bbd0;
+}
+
+.cerrar-modal {
+  position: absolute;
+  right: 1.3rem;
+  top: 1.1rem;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #f472b6;
+}
+
+.cerrar-modal:hover {
+  color: #880e4f;
+}
+
+.texto-destacado {
+  color: #c2185b;
+  font-weight: 600;
+  margin: 0.5rem 0 1rem 0;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .hero-grid, .grid-proyecto, .fila-form {
+    grid-template-columns: 1fr;
+  }
+  .enlaces-nav {
+    flex-wrap: wrap;
+  }
+}
+
+
+/* ================= FOTOS DE LAS PRENDAS Y MATERIALES ================= */
+.foto-card-box {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #fdf2f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #f8bbd0;
+  margin-bottom: 0.8rem;
+}
+
+.foto-prenda-catalogo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.tarjeta-articulo:hover .foto-prenda-catalogo {
+  transform: scale(1.05);
+}
+
+.badge-flotante {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  margin-bottom: 0 !important;
+}
+
+/* Subida de foto en formulario */
+.subir-foto-box {
+  background: #fff5f8;
+  border: 2px dashed #f472b6;
+  border-radius: 12px;
+  padding: 1.2rem;
+  text-align: center;
+  transition: var(--transicion);
+}
+
+.subir-foto-box:hover {
+  background: #fce4ec;
+  border-color: #d81b60;
+}
+
+.texto-ayuda {
+  display: block;
+  font-size: 0.8rem;
+  color: #ad1457;
+  margin-top: 0.5rem;
+}
+
+.vista-previa-contenedor {
+  margin-top: 0.8rem;
+}
+
+.img-previa {
+  max-width: 220px;
+  max-height: 160px;
+  border-radius: 10px;
+  border: 2px solid #d81b60;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Miniaturas en tablas del administrador */
+.mini-foto-tabla {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #f8bbd0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.mini-foto-tabla:hover {
+  transform: scale(1.2);
+  border-color: #d81b60;
+}
+
+/* Modal Foto Ampliada (Lightbox) */
+.modal-contenido-foto {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  position: relative;
+}
+
+.foto-ampliada {
+  max-width: 100%;
+  max-height: 450px;
+  object-fit: contain;
+  border-radius: 10px;
+  border: 1px solid #fce4ec;
+}
+
+/* Modal de Login Psicopedagoga */
+.login-modal-box {
+  max-width: 420px;
+  border-top: 6px solid #d81b60;
+}
+
+.icono-llave-box {
+  width: 65px;
+  height: 65px;
+  background: #fce4ec;
+  color: #d81b60;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  box-shadow: 0 4px 10px rgba(216, 27, 96, 0.15);
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Intercambio Solidario | U.E.P. Enrique Sánchez de Lozada</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  
+  <header class="header-principal">
+    <div class="contenedor header-contenido">
+      <div class="logos-institucion">
+        <img src="img/escudo_colegio.png" alt="Escudo Colegio ESL" class="logo-colegio">
+        <div>
+          <h1>U.E.P. "ENRIQUE SÁNCHEZ DE LOZADA"</h1>
+          <p class="subtitulo-header">Dirección Distrital de Educación Porco • Agua de Castilla</p>
+          <span class="badge-lema"><i class="fas fa-hands-helping"></i> Sistema Web de Intercambio y Donación Solidaria</span>
+        </div>
+      </div>
+      <div class="acciones-header">
+        <button onclick="abrirModalLogin()" class="btn btn-admin">
+          <i class="fas fa-lock"></i> Acceso Psicopedagogía
+        </button>
+      </div>
+    </div>
+  </header>
+
+ 
+  <nav class="barra-navegacion">
+    <div class="contenedor menu-flex">
+      <ul class="enlaces-nav">
+        <li><a href="#inicio" class="activo"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="#catalogo"><i class="fas fa-boxes"></i> Catálogo Solidario</a></li>
+        <li><a href="#donar"><i class="fas fa-gift"></i> Donar / Prestar</a></li>
+        <li><a href="#solicitar"><i class="fas fa-hand-holding-heart"></i> Solicitar Ayuda</a></li>
+        <li><a href="#proyecto"><i class="fas fa-users"></i> Nuestro Proyecto</a></li>
+      </ul>
+      <div class="lema-nav">
+        <i class="fas fa-heart text-danger"></i> "Compartir es multiplicar oportunidades"
+      </div>
+    </div>
+  </nav>
+
+  
+  <section id="inicio" class="hero-banner">
+    <div class="contenedor hero-grid">
+      <div class="hero-texto">
+        <h2>Apoyo Estudiantil Solidario</h2>
+        <p>¿Tienes prendas de uniforme, chamarras, zapatos, guardapolvos o materiales escolares que ya no usas? ¡Dónalos o intercámbialos!</p>
+        <p>Este sistema está supervisado y administrado de forma segura y confidencial por el <strong>Gabinete de Psicopedagogía</strong> para garantizar que los recursos lleguen a quienes más lo necesitan.</p>
+        <div class="hero-botones">
+          <a href="#donar" class="btn btn-primario"><i class="fas fa-plus-circle"></i> Donar una Prenda o Material</a>
+          <a href="#catalogo" class="btn btn-secundario"><i class="fas fa-search"></i> Ver Disponibles</a>
+        </div>
+      </div>
+      <div class="hero-imagen-box">
+        <img src="img/foto_equipo.jpg" alt="Estudiantes de 6to de Secundaria trabajando en el sistema" class="foto-estudiantes">
+        <p class="pie-foto"><i class="fas fa-code"></i> Proyecto desarrollado por estudiantes de 6to de Secundaria - BTH Sistemas Informáticos</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="seccion-categorias">
+    <div class="contenedor">
+      <h3 class="titulo-seccion"><i class="fas fa-tags"></i> Categorías Solidarias</h3>
+      <div class="grid-categorias">
+        <div class="tarjeta-categoria" onclick="filtrarPorCategoria('Prendas y Uniformes')">
+          <i class="fas fa-tshirt icono-cat"></i>
+          <h4>Prendas y Uniformes</h4>
+          <p>Chamarras, pantalones, chompas, guardapolvos y calzados escolares.</p>
+        </div>
+        <div class="tarjeta-categoria" onclick="filtrarPorCategoria('Libros y Textos')">
+          <i class="fas fa-book icono-cat"></i>
+          <h4>Libros y Textos</h4>
+          <p>Libros de lectura, textos de estudio, diccionarios y bibliografías.</p>
+        </div>
+        <div class="tarjeta-categoria" onclick="filtrarPorCategoria('Útiles Escolares')">
+          <i class="fas fa-pencil-ruler icono-cat"></i>
+          <h4>Útiles y Material Didáctico</h4>
+          <p>Cuadernos, carpetas, estuches geométricos, pinturas y colores.</p>
+        </div>
+        <div class="tarjeta-categoria" onclick="filtrarPorCategoria('Material Técnico')">
+          <i class="fas fa-tools icono-cat"></i>
+          <h4>Especialidades Técnicas</h4>
+          <p>Herramientas y materiales de prácticas técnicas del colegio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="catalogo" class="seccion-catalogo">
+    <div class="contenedor">
+      <div class="cabecera-catalogo">
+        <div>
+          <h3 class="titulo-seccion"><i class="fas fa-hand-holding-heart"></i> Artículos y Prendas Disponibles</h3>
+          <p>Artículos con fotografía y detalles verificados y aprobados por la psicopedagoga.</p>
+        </div>
+        <div class="filtros-box">
+          <input type="text" id="busquedaInput" placeholder="Buscar prenda o material..." onkeyup="filtrarArticulos()">
+          <select id="filtroTipo" onchange="filtrarArticulos()">
+            <option value="todos">Todas las categorías</option>
+            <option value="Prendas y Uniformes">Prendas y Uniformes</option>
+            <option value="Libros y Textos">Libros y Textos</option>
+            <option value="Útiles Escolares">Útiles Escolares</option>
+            <option value="Material Técnico">Material Técnico</option>
+          </select>
+        </div>
+      </div>
+
+     
+      <div id="contenedorArticulos" class="grid-articulos">
+        
+      </div>
+    </div>
+  </section>
+
+ 
+  <section id="donar" class="seccion-formulario fondo-claro">
+    <div class="contenedor">
+      <div class="form-card">
+        <div class="form-header">
+          <i class="fas fa-heart text-danger icono-form"></i>
+          <h3>Registrar Donación o Intercambio con Foto</h3>
+          <p>Completa el formulario y sube la foto de la prenda o material. Tu publicación será revisada por la psicopedagoga antes de aparecer en el catálogo escolar.</p>
+        </div>
+
+        <form id="formDonacion" onsubmit="registrarDonacion(event)">
+          <div class="fila-form">
+            <div class="campo">
+              <label><i class="fas fa-tag"></i> Nombre del Artículo o Prenda *</label>
+              <input type="text" id="nombreArticulo" placeholder="Ej:Chompa de uniforme talla 14 / Chompa escolar" required>
+              <img src="">
+            </div>
+            <div class="campo">
+              <label><i class="fas fa-layer-group"></i> Categoría *</label>
+              <select id="categoriaArticulo" required>
+                <option value="">Seleccione una categoría</option>
+                <option value="Prendas y Uniformes">Prendas y Uniformes</option>
+                <option value="Libros y Textos">Libros y Textos</option>
+                <option value="Útiles Escolares">Útiles Escolares</option>
+                <option value="Material Técnico">Material Técnico</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fila-form">
+            <div class="campo">
+              <label><i class="fas fa-sync-alt"></i> Modalidad *</label>
+              <select id="modalidadArticulo" required>
+                <option value="Donación">Donación Gratuita (Regalar)</option>
+                <option value="Intercambio">Intercambio Solidario</option>
+                <option value="Préstamo">Préstamo Temporal</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label><i class="fas fa-star-half-alt"></i> Estado del Material *</label>
+              <select id="estadoFisico" required>
+                <option value="Excelente estado">Excelente estado (Como nuevo)</option>
+                <option value="Buen estado">Buen estado (Muy bien cuidado)</option>
+                <option value="Aceptable">Aceptable (Listo para usar)</option>
+              </select>
+            </div>
+          </div>
+
+          
+          <div class="campo">
+            <label><i class="fas fa-camera"></i> Fotografía de la Prenda o Material (Opcional pero recomendado)</label>
+            <div class="subir-foto-box">
+              <input type="file" id="fotoArticulo" accept="image/*" onchange="previsualizarFoto(event)">
+              <div id="vistaPreviaFotoBox" class="vista-previa-contenedor" style="display: none;">
+                <img id="imgPrevia" src="" alt="Vista previa de la prenda" class="img-previa">
+                <button type="button" class="btn btn-sm" style="background:#ef4444; color:white; margin-top:5px;" onclick="quitarFoto()">
+                  <i class="fas fa-trash"></i> Quitar Foto
+                </button>
+              </div>
+              <small class="texto-ayuda"><i class="fas fa-info-circle"></i> Puedes tomarle una foto con el celular o subir una imagen de tu computadora.</small>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label><i class="fas fa-align-left"></i> Descripción / Detalles (Talla, curso recomendado, etc.) *</label>
+            <textarea id="descripcionArticulo" rows="3" placeholder="Ej: Chamarra verde del colegio, talla 14 o S, limpia y bien conservada..." required></textarea>
+          </div>
+
+          <div class="fila-form">
+            <div class="campo">
+              <label><i class="fas fa-user-graduate"></i> Nombre del Estudiante Donante *</label>
+              <input type="text" id="donanteNombre" placeholder="Tu nombre y apellido" required>
+            </div>
+            <div class="campo">
+              <label><i class="fas fa-school"></i> Curso y Paralelo *</label>
+              <input type="text" id="donanteCurso" placeholder="Ej: 6to 'B' de Secundaria" required>
+            </div>
+          </div>
+
+          <div class="campo-check">
+            <input type="checkbox" id="anonimoCheck">
+            <label for="anonimoCheck"><strong>Hacer publicación anónima</strong> (Tu nombre se mantendrá en privado y solo lo sabrá la psicopedagoga)</label>
+          </div>
+
+          <button type="submit" class="btn btn-primario btn-block">
+            <i class="fas fa-paper-plane"></i> Enviar a Revisión de Psicopedagogía
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="solicitar" class="seccion-formulario">
+    <div class="contenedor">
+      <div class="form-card border-solidario">
+        <div class="form-header">
+          <i class="fas fa-hands-helping text-primario icono-form"></i>
+          <h3>¿Necesitas alguna prenda o material educativo?</h3>
+          <p>Si te falta algún uniforme, libro o útil para tus clases, escribe tu solicitud. La psicopedagoga te ayudará de forma discreta y confidencial.</p>
+        </div>
+
+        <form id="formSolicitud" onsubmit="registrarSolicitud(event)">
+          <div class="fila-form">
+            <div class="campo">
+              <label><i class="fas fa-question-circle"></i> ¿Qué material o prenda necesitas? *</label>
+              <input type="text" id="solicitudObjeto" placeholder="Ej: Necesito guardapolvo blanco talla M o pantalón azul" required>
+            </div>
+            <div class="campo">
+              <label><i class="fas fa-graduation-cap"></i> Tu Curso *</label>
+              <input type="text" id="solicitudCurso" placeholder="Ej: 3ro de Secundaria" required>
+            </div>
+          </div>
+
+          <div class="campo">
+            <label><i class="fas fa-comment-dots"></i> Motivo o Mensaje para la Psicopedagoga *</label>
+            <textarea id="solicitudMensaje" rows="3" placeholder="Explícanos brevemente para qué materia o necesidad lo requieres..." required></textarea>
+          </div>
+
+          <div class="fila-form">
+            <div class="campo">
+              <label><i class="fas fa-user"></i> Tu Nombre Completo *</label>
+              <input type="text" id="solicitudEstudiante" placeholder="Nombre y Apellido" required>
+            </div>
+            <div class="campo">
+              <label><i class="fas fa-phone-alt"></i> Teléfono / WhatsApp de contacto o tutor</label>
+              <input type="text" id="solicitudTelefono" placeholder="Ej: 71234567">
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-exito btn-block">
+            <i class="fas fa-envelope-open-text"></i> Enviar Solicitud Confidencial a Psicopedagogía
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="proyecto" class="seccion-proyecto">
+    <div class="contenedor">
+      <div class="card-info-proyecto">
+        <div class="grid-proyecto">
+          <div>
+            <h3><i class="fas fa-graduation-cap"></i> Proyecto de Grado - Bachillerato Técnico Humanístico (BTH)</h3>
+            <p><strong>Especialidad:</strong> Sistemas Informáticos</p>
+            <p><strong>Unidad Educativa:</strong> Técnico Humanístico "Enrique Sánchez de Lozada" (Porco - Agua de Castilla)</p>
+            <p><strong>Gestión:</strong> 2026</p>
+            <hr>
+            <h4>Equipo de Estudiantes Desarrolladoras:</h4>
+            <ul class="lista-integrantes">
+              <li><i class="fas fa-check-circle text-exito"></i> <strong>Daniela Apaza Cruz</strong> (Desarrollo y Lógica Web)</li>
+              <li><i class="fas fa-check-circle text-exito"></i> <strong>Leydi Keyla Coca Camata</strong> (Diseño Visual e Interfaz CSS)</li>
+              <li><i class="fas fa-check-circle text-exito"></i> <strong>Haneth Abigail Tarqui Mamani</strong> (Estructuración y Gestión)</li>
+            </ul>
+            <p class="mt-2"><strong>Docente Tutor:</strong> Lic. Norma Roca Pimentel</p>
+            <p><strong>Docente Responsable:</strong> Lic. Silvia Eugenia Choque Villafuerte</p>
+          </div>
+          <div class="docente-supervisora">
+            <div class="badge-psico">
+              <i class="fas fa-user-md fa-3x"></i>
+              <h4>Supervisión Institucional</h4>
+              <p><strong>Gabinete de Psicopedagogía</strong></p>
+              <p class="psico-desc">Responsable del control, confidencialidad, aprobación y entrega física de las donaciones a los alumnos.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <footer class="footer-colegio">
+    <div class="contenedor footer-grid">
+      <div>
+        <p><strong>U.E.P. "ENRIQUE SÁNCHEZ DE LOZADA"</strong></p>
+        <p>Dirección Distrital de Educación Porco • Potosí, Bolivia</p>
+      </div>
+      <div>
+        <p>Tecnología al servicio de la solidaridad escolar © 2026</p>
+      </div>
+    </div>
+  </footer>
+
+  
+  <div id="modalPedirArticulo" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+      <h4><i class="fas fa-hand-holding-heart"></i> Solicitar este artículo</h4>
+      <p id="modalTituloArticulo" class="texto-destacado"></p>
+      <form id="formPedirArticuloModal" onsubmit="enviarPedidoModal(event)">
+        <input type="hidden" id="modalArticuloId">
+        <div class="campo">
+          <label>Tu Nombre Completo *</label>
+          <input type="text" id="modalNombreEstudiante" required placeholder="Nombre del alumno solicitante">
+        </div>
+        <div class="campo">
+          <label>Curso y Paralelo *</label>
+          <input type="text" id="modalCursoEstudiante" required placeholder="Ej: 5to 'A'">
+        </div>
+        <div class="campo">
+          <label>Nota o compromiso de cuidado</label>
+          <textarea id="modalMensaje" rows="2" placeholder="Me comprometo a cuidarlo y devolverlo / darle buen uso"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primario btn-block">Confirmar Solicitud a Psicopedagogía</button>
+      </form>
+    </div>
+  </div>
+
+  
+  <div id="modalLoginPsico" class="modal">
+    <div class="modal-contenido login-modal-box">
+      <span class="cerrar-modal" onclick="cerrarModalLogin()">&times;</span>
+      <div style="text-align:center; margin-bottom:1.2rem;">
+        <div class="icono-llave-box">
+          <i class="fas fa-user-shield fa-2x"></i>
+        </div>
+        <h4 style="color:#880e4f; margin-top:0.5rem;">Acceso al Gabinete de Psicopedagogía</h4>
+        <p style="font-size:0.85rem; color:#64748b;">Módulo restringido únicamente para la psicopedagoga responsable.</p>
+      </div>
+
+      <form id="formLoginPsico" onsubmit="verificarAccesoPsico(event)">
+        <div class="campo">
+          <label><i class="fas fa-user"></i> Usuario Responsable</label>
+          <input type="text" id="loginUsuario" value="Lic. Vanesa" readonly style="background:#fce4ec; font-weight:600; color:#880e4f;">
+        </div>
+        <div class="campo">
+          <label><i class="fas fa-key"></i> Contraseña de Seguridad *</label>
+          <input type="password" id="loginPassword" placeholder="Ingrese su contraseña" required autofocus>
+          <small style="color:#d81b60; font-size:0.78rem;"><i class="fas fa-info-circle"></i> Contraseña asignada: <strong>psico2026</strong> o <strong>esl123</strong></small>
+        </div>
+        <div id="loginErrorMsg" style="display:none; color:#e53e3e; font-size:0.85rem; margin-bottom:0.8rem; text-align:center;">
+          <i class="fas fa-exclamation-triangle"></i> Contraseña incorrecta. Intente nuevamente.
+        </div>
+        <button type="submit" class="btn btn-admin btn-block">
+          <i class="fas fa-sign-in-alt"></i> Entrar al Panel de Control
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/datos_iniciales.js"></script>
+  <script src="js/sistema.js"></script>
+</body>
+</html>

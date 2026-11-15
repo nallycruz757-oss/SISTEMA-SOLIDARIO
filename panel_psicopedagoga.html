@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración | Gabinete de Psicopedagogía - U.E. ESL</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="body-admin">
+
+  <!-- CABECERA DEL PANEL -->
+  <header class="header-admin">
+    <div class="contenedor header-admin-flex">
+      <div class="admin-titular">
+        <img src="img/escudo_colegio.png" alt="Escudo" class="mini-escudo">
+        <div>
+          <h2>Módulo de Psicopedagogía y Supervisión</h2>
+          <p>U.E. Enrique Sánchez de Lozada • Sistema de Intercambio Solidario</p>
+        </div>
+      </div>
+      <div class="admin-perfil">
+        <span class="usuario-tag"><i class="fas fa-user-check"></i> Lic. Vanesa (Psicopedagoga)</span>
+        <button onclick="cerrarSesionAdmin()" class="btn btn-sm btn-coral"><i class="fas fa-sign-out-alt"></i> Salir / Cerrar Sesión</button>
+        <a href="index.html" class="btn btn-sm btn-claro"><i class="fas fa-external-link-alt"></i> Portal Alumnos</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="contenedor layout-admin">
+    
+    <!-- TARJETAS DE ESTADÍSTICAS (KPIs para asombrar a los jurados) -->
+    <section class="grid-resumen">
+      <div class="card-metrica verde">
+        <i class="fas fa-check-double icono-metrica"></i>
+        <div>
+          <h3 id="statAprobados">0</h3>
+          <p>Donaciones Aprobadas</p>
+        </div>
+      </div>
+      <div class="card-metrica naranja">
+        <i class="fas fa-clock icono-metrica"></i>
+        <div>
+          <h3 id="statPendientes">0</h3>
+          <p>Pendientes de Revisión</p>
+        </div>
+      </div>
+      <div class="card-metrica azul">
+        <i class="fas fa-inbox icono-metrica"></i>
+        <div>
+          <h3 id="statSolicitudes">0</h3>
+          <p>Solicitudes de Alumnos</p>
+        </div>
+      </div>
+      <div class="card-metrica violeta">
+        <i class="fas fa-tshirt icono-metrica"></i>
+        <div>
+          <h3 id="statPrendas">0</h3>
+          <p>Prendas y Uniformes</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NAVEGACIÓN DE PESTAÑAS DEL PANEL -->
+    <div class="tabs-admin">
+      <button class="tab-btn activo" onclick="cambiarTab('pendientes')">
+        <i class="fas fa-hourglass-half"></i> Donaciones Pendientes por Validar
+      </button>
+      <button class="tab-btn" onclick="cambiarTab('inventario')">
+        <i class="fas fa-boxes"></i> Inventario Solidario Activo
+      </button>
+      <button class="tab-btn" onclick="cambiarTab('solicitudes')">
+        <i class="fas fa-heart"></i> Solicitudes Confidenciales de Estudiantes
+      </button>
+    </div>
+
+    <!-- PESTAÑA 1: DONACIONES PENDIENTES DE REVISIÓN -->
+    <div id="tabPendientes" class="seccion-tab activa">
+      <div class="card-blanca">
+        <div class="card-blanca-header">
+          <h3><i class="fas fa-clipboard-check"></i> Donaciones y Prendas Esperando Aprobación</h3>
+          <p>Como psicopedagoga, aquí puedes ver la <strong>fotografía real</strong>, verificar el estado y los datos antes de que sea pública para los estudiantes.</p>
+        </div>
+        <div class="tabla-responsive">
+          <table class="tabla-admin">
+            <thead>
+              <tr>
+                <th>Foto</th>
+                <th>Fecha</th>
+                <th>Artículo / Prenda</th>
+                <th>Categoría</th>
+                <th>Estado Físico</th>
+                <th>Donante</th>
+                <th>Curso</th>
+                <th>Modalidad</th>
+                <th>Acción Psicopedagógica</th>
+              </tr>
+            </thead>
+            <tbody id="tablaPendientesCuerpo">
+              <!-- Cargado con JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PESTAÑA 2: INVENTARIO APROBADO Y CONTROL DE ENTREGA -->
+    <div id="tabInventario" class="seccion-tab">
+      <div class="card-blanca">
+        <div class="card-blanca-header">
+          <h3><i class="fas fa-warehouse"></i> Inventario de Artículos Disponibles y Entregados</h3>
+          <p>Control del estado de cada prenda física registrada en el gabinete de psicopedagogía.</p>
+        </div>
+        <div class="tabla-responsive">
+          <table class="tabla-admin">
+            <thead>
+              <tr>
+                <th>Foto</th>
+                <th>Código</th>
+                <th>Artículo</th>
+                <th>Categoría</th>
+                <th>Modalidad</th>
+                <th>Donante Registrado</th>
+                <th>Estado Actual</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="tablaInventarioCuerpo">
+              <!-- Cargado con JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- PESTAÑA 3: SOLICITUDES DE ESTUDIANTES -->
+    <div id="tabSolicitudes" class="seccion-tab">
+      <div class="card-blanca">
+        <div class="card-blanca-header">
+          <h3><i class="fas fa-hands-helping"></i> Bandeja Confidencial de Necesidades Estudiantiles</h3>
+          <p>Peticiones de alumnos con dificultades económicas que necesitan prendas o materiales escolares.</p>
+        </div>
+        <div class="tabla-responsive">
+          <table class="tabla-admin">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Estudiante</th>
+                <th>Curso</th>
+                <th>Artículo Requerido</th>
+                <th>Motivo o Mensaje</th>
+                <th>Contacto</th>
+                <th>Estado</th>
+                <th>Gestión</th>
+              </tr>
+            </thead>
+            <tbody id="tablaSolicitudesCuerpo">
+              <!-- Cargado con JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MODAL PARA VER FOTO EN GRANDE (LIGHTBOX) -->
+  <div id="modalVerFotoGrande" class="modal" onclick="cerrarModalFoto()">
+    <div class="modal-contenido-foto" onclick="event.stopPropagation()">
+      <span class="cerrar-modal" onclick="cerrarModalFoto()">&times;</span>
+      <h4 id="modalFotoTitulo" style="color:#880e4f; margin-bottom:10px;"></h4>
+      <img id="modalFotoSrc" src="" alt="Prenda" class="foto-ampliada">
+    </div>
+  </div>
+
+  <footer class="footer-admin">
+    <p>Gabinete de Psicopedagogía • U.E. Enrique Sánchez de Lozada • Sistema Solidario 2026</p>
+  </footer>
+
+  <script src="js/datos_iniciales.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
